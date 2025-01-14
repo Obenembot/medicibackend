@@ -9,9 +9,10 @@ import java.time.Instant;
 public class BuilderUtil {
 
     public <T extends MultiEntity> T buildCreate(T entity, String username) {
-        Instant now = Instant.now();
-        entity.setCreatedDate(now);
-        entity.setLastUpdatedDate(now);
+        Instant currentDate = this.getCurrentDate();
+        entity.setCreatedDate(currentDate);
+        entity.setLastUpdatedDate(currentDate);
+
         entity.setCreatedBy(username);
         entity.setLastUpdatedBy(username);
 
@@ -21,10 +22,25 @@ public class BuilderUtil {
 
 
     public <T extends MultiEntity> T buildUpdate(T entity, String username) {
-        entity.setLastUpdatedDate(Instant.now());
+        Instant currentDate = this.getCurrentDate();
+        entity.setLastUpdatedDate(currentDate);
         entity.setLastUpdatedBy(username);
 
         entity.setDeletedDate(null);
         return entity;
+    }
+
+    public <T extends MultiEntity> T buildDelete(T entity, String username) {
+        Instant currentDate = this.getCurrentDate();
+
+        entity.setLastUpdatedDate(currentDate);
+        entity.setLastUpdatedBy(username);
+
+        entity.setDeletedDate(currentDate);
+        return entity;
+    }
+
+    private Instant getCurrentDate() {
+        return Instant.now();
     }
 }

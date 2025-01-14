@@ -15,16 +15,12 @@ import za.co.medici.listener.AuditEntityListener;
 @Setter
 @Entity
 @Table(name = "User")
-public class User extends MultiEntity  {
+public class User extends MultiEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", nullable = false)
     private Long id;
-
-    @NotBlank
-    @Size(min = 3, max = 50)
-    private String username;
 
     @NotBlank
     @Email
@@ -33,6 +29,12 @@ public class User extends MultiEntity  {
     @NotBlank
     @Size(min = 6)
     private String password;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "surname")
+    private String surname;
 
 }
 

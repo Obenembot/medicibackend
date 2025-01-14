@@ -6,7 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CheckUtil {
-    public boolean isEmpty(@NotNull Object value) {
+    public boolean isEmpty(Object value) {
         return ObjectUtils.isEmpty(value);
+    }
+
+    public boolean notEqual(Long value1, Long value2) {
+        return ObjectUtils.notEqual(value1, value2);
     }
 }

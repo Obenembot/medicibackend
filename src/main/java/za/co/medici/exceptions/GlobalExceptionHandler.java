@@ -17,21 +17,21 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<GenericResponseDetail<?>> handleException(Exception e) {
-        logger.warn("[{}] [{}] [handleException()] an exception occurred with this message {}", Constants.SERVICE_NAME, Constants.WARNING, e.getMessage());
+        logger.warn("[{}] [{}] [handleException()] an exception occurred with this message {}", Constants.SERVICE_NAME, Constants.ERROR, e.getMessage());
         GenericResponseDetail<?> responseDetail = this.buildResponseDetail(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()), e.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseDetail);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<GenericResponseDetail<?>> handleIllegalArgumentException(IllegalArgumentException e) {
-        logger.warn("[{}] [{}] [handleIllegalArgumentException()] an exception occurred with this message {}", Constants.SERVICE_NAME, Constants.ERROR, e.getMessage());
+        logger.warn("[{}] [{}] [handleIllegalArgumentException()] an exception occurred with this message {}", Constants.SERVICE_NAME, Constants.WARNING, e.getMessage());
         GenericResponseDetail<?> responseDetail = this.buildResponseDetail(String.valueOf(HttpStatus.BAD_REQUEST.value()), e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseDetail);
     }
 
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<GenericResponseDetail<?>> handleInvalidIdException(IllegalStateException e) {
-        logger.warn("[{}] [{}] [handleInvalidIdException()] an Illegal State Exception occurred with this message {}", Constants.SERVICE_NAME, Constants.ERROR, e.getMessage());
+        logger.warn("[{}] [{}] [handleInvalidIdException()] an Illegal State Exception occurred with this message {}", Constants.SERVICE_NAME, Constants.WARNING, e.getMessage());
         GenericResponseDetail<?> responseDetail = this.buildResponseDetail(String.valueOf(HttpStatus.BAD_REQUEST.value()), e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseDetail);
     }
@@ -39,7 +39,14 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ResponseEntity<GenericResponseDetail<?>> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
-        logger.warn("[{}] [{}] [handleMissingServletRequestParameterException()] An Exception occurred with this message {}", Constants.SERVICE_NAME, Constants.ERROR, e.getMessage());
+        logger.warn("[{}] [{}] [handleMissingServletRequestParameterException()] An Exception occurred with this message {}", Constants.SERVICE_NAME, Constants.WARNING, e.getMessage());
+        GenericResponseDetail<?> responseDetail = this.buildResponseDetail(String.valueOf(400), e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseDetail);
+    }
+
+    @ExceptionHandler(UserException.class)
+    public ResponseEntity<GenericResponseDetail<?>> handleUserException(UserException e) {
+        logger.warn("[{}] [{}] [handleUserException()] An User Exception occurred with this message {}", Constants.SERVICE_NAME, Constants.WARNING, e.getMessage());
         GenericResponseDetail<?> responseDetail = this.buildResponseDetail(String.valueOf(400), e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseDetail);
     }
