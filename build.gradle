@@ -40,9 +40,8 @@ dependencies {
 	testImplementation("org.testcontainers:jdbc:1.20.1")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation ("jakarta.validation:jakarta.validation-api:3.0.2")
 }
-
-
 
 tasks.named('test') {
 	useJUnitPlatform()
