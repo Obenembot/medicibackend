@@ -7,10 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import za.co.medici.exceptions.NoAuditEntityException;
 import za.co.medici.models.AuditEntity;
 import za.co.medici.service.AuditEntityService;
@@ -19,6 +16,7 @@ import za.co.medici.uitls.Constants;
 
 import java.util.List;
 
+@CrossOrigin(origins = {"http://localhost:8082", "http://localhost:8082/"})
 @RestController
 @RequestMapping("/api/audit-entity")
 @Tag(name = "Audit Entity Management", description = "API for managing audit entity")
