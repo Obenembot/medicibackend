@@ -4,10 +4,10 @@
 
 1. Checks For fraudulent activities when updating a user. (By Id and Email)
 2. Email Validation to avoid Duplicates
-3. Audit History on Use is kept (To See what happened on every user And Who made the changes)
+3. Audit History on User is kept (To See what happened on every user And Who made the changes)
 4. Also password is Based64 encoded
 5. Added a new api to update user password.
-6. Email Validation added as well. 
+6. Email Validation added as well to check for proper email format. 
 
 ### Updates to be made
 
