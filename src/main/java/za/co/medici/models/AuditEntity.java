@@ -13,12 +13,13 @@ import org.slf4j.LoggerFactory;
 import za.co.medici.uitls.Constants;
 
 import java.io.Serial;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "User")
-public class AuditEntity extends MultiEntity {
+@Table(name = "audit_entity")
+public class AuditEntity extends MultiEntity implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

@@ -16,17 +16,14 @@ import java.lang.reflect.Field;
 @Component
 public class AuditEntityListener<T> {
     private static final Logger logger = LoggerFactory.getLogger(AuditEntityListener.class);
-
     private static BuilderUtil builderUtil;
     private static AuditEntityService auditEntityService;
-
 
     @Autowired
     public void setGenericEntityListener(BuilderUtil builderUtil, AuditEntityService auditEntityService) {
         AuditEntityListener.builderUtil = builderUtil;
         AuditEntityListener.auditEntityService = auditEntityService;
     }
-
 
     @PostPersist
     public void postPersist(T entity) {
@@ -49,10 +46,9 @@ public class AuditEntityListener<T> {
     AuditEntity buildAuditTrial(T entity, Class<?> aClass, String typeOfLog) {
         try {
             AuditEntity auditTrial = new AuditEntity();
-            Field customerIdField = aClass.getDeclaredField("id");
-            customerIdField.setAccessible(true);
-            Long customerId = (Long) customerIdField.get(entity);
-            auditTrial.setEntityId(customerId);
+            Field idField = aClass.getDeclaredField("id");
+            idField.setAccessible(true);
+            auditTrial.setEntityId((Long) idField.get(entity));
             auditTrial.setEntityType(aClass.getName());
             auditTrial.setPayload(entity.toString());
             auditTrial.setAction(typeOfLog);

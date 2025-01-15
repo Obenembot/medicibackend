@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -19,7 +19,7 @@ public class MultiEntity {
     @NotNull
     @Column(name = "created_date", nullable = false, updatable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Instant createdDate;
+    private LocalDateTime createdDate;
 
     @NotNull
     @Column(name = "created_by", nullable = false, updatable = false)
@@ -28,7 +28,7 @@ public class MultiEntity {
     @NotNull
     @Column(name = "last_updated_date", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Instant lastUpdatedDate;
+    private LocalDateTime lastUpdatedDate;
 
     @NotNull
     @Column(name = "last_updated_by", nullable = false)
@@ -36,5 +36,5 @@ public class MultiEntity {
 
     @Column(name = "deleted_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Instant deletedDate;
+    private LocalDateTime deletedDate;
 }
