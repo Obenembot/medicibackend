@@ -12,7 +12,7 @@ import za.co.medici.exceptions.UserException;
 import za.co.medici.models.User;
 import za.co.medici.service.UserService;
 
-@CrossOrigin(origins = {"http://localhost:8082", "http://localhost:8082/"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3000/"})
 @Tag(name = "User Management", description = "API for managing users (Create, Update, Get and Delete")
 @RestController
 @RequestMapping("/api/users")
