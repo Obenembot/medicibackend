@@ -16,7 +16,7 @@ spec:
         - name: app
           image: thembaembot/medicibeckend:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:mysql://mysql-service:3306/medici_DB?createDatabaseIfNotExist=true
