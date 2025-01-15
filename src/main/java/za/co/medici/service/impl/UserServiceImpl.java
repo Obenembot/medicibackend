@@ -2,6 +2,8 @@ package za.co.medici.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import za.co.medici.dto.CreateUserDto;
 import za.co.medici.dto.UseDto;
@@ -102,6 +104,12 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findUserByEmailAndDeletedDateNull(email);
         logger.info("[{}] [{}] [updateUser()] Request to find User with email: {} complete", Constants.SERVICE_NAME, Constants.INFO, email);
         return user;
+    }
+
+    @Override
+    public Page<User> findAllUserAndDeletedDateNull(Pageable pageable) {
+        logger.info("[{}] [{}] [findUsersAndDeletedDateNull()] Request to find Users And Deleted Date Null started", Constants.SERVICE_NAME, Constants.INFO);
+        return this.userRepository.findByDeletedDateNull(pageable);
     }
 
     @Override

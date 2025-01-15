@@ -2,6 +2,8 @@ package za.co.medici.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.co.medici.dto.CreateUserDto;
@@ -43,6 +45,12 @@ public class UserController {
     public ResponseEntity<User> findUserByEmail(@PathVariable String email) throws UserException {
         User user = userService.findUserByEmailAndDeletedDateNull(email);
         return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/")
+    @Operation(summary = "Find All Users", description = "Retrieves All Users. returns 200 status is no issue")
+    public ResponseEntity<Page<User>> findUsers(Pageable pageable) {
+        return ResponseEntity.ok(userService.findAllUserAndDeletedDateNull(pageable));
     }
 
     @DeleteMapping("/{email}")
