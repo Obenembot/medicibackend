@@ -1,4 +1,4 @@
-# Medi Service
+# Medici Service
 
 ### Some Checks that are made
 1. Checks For fraudulent activities when updating  a user. (By Id and Email)

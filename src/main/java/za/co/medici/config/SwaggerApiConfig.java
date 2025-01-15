@@ -13,9 +13,9 @@ public class SwaggerApiConfig {
    @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Medi User Registration")
+                .info(new Info().title("Medici User Management")
                         .description("""
-                                RESTful APIs for user registration, including endpoints for
+                                RESTful APIs for User Management, including endpoints for
                                 "creating user accounts, retrieving user information, updating user details,
                                 "and deleting user accounts""")
                         .version("v1.0")
