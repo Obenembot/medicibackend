@@ -7,6 +7,7 @@
 3. Audit History on Use is kept (To See what happened on every user And Who made the changes)
 4. Also password is Based64 encoded
 5. Added a new api to update user password.
+6. Email Validation added as well. 
 
 ### Updates to be made
 
@@ -38,9 +39,12 @@ kubectl apply -f mysql-service.yaml
 kubectl port-forward service/medicibeckend 8081:80
 ```
 
-###  Use to List Pod or Service
+###  Other Kube Commands
 
 ```bash
 kubectl get pod
 kubectl get service
+kubectl delete service medicibeckend
+kubectl delete pod medicibeckend
+kubectl scale deployment medicibeckend --replicas=3
 ```

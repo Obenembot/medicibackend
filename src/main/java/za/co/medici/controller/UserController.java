@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import za.co.medici.dto.CreateUserDto;
 import za.co.medici.dto.UseDto;
 import za.co.medici.exceptions.UserException;
 import za.co.medici.models.User;
@@ -23,8 +24,8 @@ public class UserController {
 
     @PostMapping("/")
     @Operation(summary = "Create User", description = "Create User. returns 200 status is no issue, 400 in case of bad data and user already exist")
-    public ResponseEntity<User> createUser(@RequestBody User user, @RequestHeader("X-Username") String usernameHeader) throws UserException {
-        User createdUser = userService.createUser(user, usernameHeader);
+    public ResponseEntity<User> createUser(@RequestBody CreateUserDto useDto, @RequestHeader("X-Username") String usernameHeader) throws UserException {
+        User createdUser = userService.createUser(useDto, usernameHeader);
         return ResponseEntity.ok(createdUser);
     }
 

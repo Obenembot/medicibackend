@@ -8,4 +8,5 @@ import za.co.medici.models.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findUserByEmailAndDeletedDateNull(String email);
+    User findUserByIdAndDeletedDateNull(Long id);
 }

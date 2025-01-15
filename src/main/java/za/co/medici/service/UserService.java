@@ -1,12 +1,13 @@
 package za.co.medici.service;
 
+import za.co.medici.dto.CreateUserDto;
 import za.co.medici.dto.UseDto;
 import za.co.medici.exceptions.UserException;
 import za.co.medici.models.User;
 
 public interface UserService {
 
-    User createUser(User user, String usernameHeader) throws UserException;
+    User createUser(CreateUserDto useDto, String usernameHeader) throws UserException;
 
     User updateUser(UseDto useDto, String usernameHeader) throws UserException;
 
