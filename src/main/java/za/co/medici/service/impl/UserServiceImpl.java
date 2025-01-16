@@ -44,8 +44,8 @@ public class UserServiceImpl implements UserService {
         logger.warn("[{}] [{}] [createUser()] Request to create User with email {} started", Constants.SERVICE_NAME, Constants.INFO, userDto.getEmail());
         User existinfUser = this.findUserByEmailAndDeletedDateNull(userDto.getEmail());
         if (!this.checkUtil.isEmpty(existinfUser)) {
-            logger.warn("[{}] [{}] [createUser()] User with Email {} already exists", Constants.SERVICE_NAME, Constants.WARNING, userDto.getEmail());
-            throw new UserException(String.format("User with Email %s already exists.", userDto.getEmail()), 400);
+            logger.warn("[{}] [{}] [createUser()] User with Email {} already exists. please use a different email", Constants.SERVICE_NAME, Constants.WARNING, userDto.getEmail());
+            throw new UserException(String.format("User with Email %s already exists. please use a different email", userDto.getEmail()), 400);
         }
 
         User user = new User();
@@ -77,8 +77,8 @@ public class UserServiceImpl implements UserService {
 
         if (!this.checkUtil.isEmpty(existingUserByEmail)
                 && this.checkUtil.notEqual(existingUserByEmail.getId(), existinfUser.getId())) {
-            logger.warn("[{}] [{}] [updateUser()] Can not update User with Email {} fraudulent activity detected.", Constants.SERVICE_NAME, Constants.WARNING, useDto.getEmail());
-            throw new UserException(String.format("Can not update User with Email %s fraudulent activity detected.", useDto.getEmail()), 404);
+            logger.warn("[{}] [{}] [updateUser()] User with Email {} already exists. please use a different email", Constants.SERVICE_NAME, Constants.WARNING, useDto.getEmail());
+            throw new UserException(String.format("User with Email %s already exists. please use a different email", useDto.getEmail()), 404);
         }
 
         existinfUser.setEmail(useDto.getEmail());
