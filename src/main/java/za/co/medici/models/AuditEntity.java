@@ -36,7 +36,7 @@ public class AuditEntity extends MultiEntity implements Serializable {
 
     @NotNull
     @Lob
-    @Column(name = "payload", nullable = false)
+    @Column(name = "payload", nullable = false, columnDefinition = "LONGTEXT")
     private String payload;
 
     @NotNull
