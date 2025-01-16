@@ -119,7 +119,6 @@ public class UserServiceImpl implements UserService {
 
         if (!this.checkUtil.isEmpty(userByEmail)) {
             this.userRepository.save(this.builderUtil.buildDelete(userByEmail, usernameHeader));
-            this.userRepository.save(userByEmail);
             logger.info("User with ID {} deleted successfully", id);
         } else {
             logger.warn("[{}] [{}] [deleteUserByEmail()] User with Email {} not found", Constants.SERVICE_NAME, Constants.WARNING, email);
