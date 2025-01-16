@@ -28,12 +28,12 @@ spec:
         - name: mysql
           image: mysql:8
           env:
-            - name: MYSQL_ROOT_PASSWORD
+            - name: MYSQL_RANDOM_ROOT_PASSWORD
               value: password
             - name: MYSQL_DATABASE
               value: medici_DB
             - name: MYSQL_USER
-              value: root
+              value: user
             - name: MYSQL_PASSWORD
               value: password
           ports:
